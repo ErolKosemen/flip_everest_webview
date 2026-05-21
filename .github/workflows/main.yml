@@ -23,7 +23,5 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      - name: Build IPA (Force Global Deployment Target)
-        env:
-          IPHONEOS_DEPLOYMENT_TARGET: '13.0'
+      - name: Build IPA
         run: flutter build ipa --no-codesign
