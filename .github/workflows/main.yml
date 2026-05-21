@@ -23,5 +23,13 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      - name: Build IPA (No Pods Install)
-        run: flutter build ipa --no-codesign --no-pub --no-version-check
+      - name: Fix and Force Update CocoaPods
+        run: |
+          cd ios
+          rm -rf Podfile.lock
+          pod repo clean --all
+          pod setup
+          pod repo update
+
+      - name: Build IPA
+        run: flutter build ipa --no-codesign
