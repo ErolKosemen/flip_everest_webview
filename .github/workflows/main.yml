@@ -5,7 +5,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: macos-13
     steps:
       - uses: actions/checkout@v3
 
@@ -18,15 +18,10 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          channel: 'stable'
+          flutter-version: '3.16.9'
 
       - name: Install dependencies
         run: flutter pub get
-
-      - name: Update CocoaPods Specs
-        run: |
-          cd ios
-          pod repo update
 
       - name: Build IPA
         run: flutter build ipa --no-codesign
