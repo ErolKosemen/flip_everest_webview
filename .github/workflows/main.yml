@@ -23,12 +23,5 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      - name: Force CocoaPods Bypass
-        run: |
-          cd ios
-          pod repo remove master || true
-          pod repo remove trunk || true
-          pod install --repo-update || true
-
       - name: Build IPA
         run: flutter build ipa --no-codesign
