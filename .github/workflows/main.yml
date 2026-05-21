@@ -23,12 +23,12 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      - name: Fix CocoaPods CDN and Repo
+      - name: Force CocoaPods Bypass
         run: |
           cd ios
           pod repo remove master || true
-          pod repo add-cdn master https://cdn.cocoapods.org/ || true
-          pod repo update
+          pod repo remove trunk || true
+          pod install --repo-update || true
 
       - name: Build IPA
         run: flutter build ipa --no-codesign
