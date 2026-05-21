@@ -34,10 +34,17 @@ target 'Runner' do
   flutter_install_all_ios_pods File.dirname(File.expand_path(__FILE__))
 end
 
+target 'OneSignalNotificationServiceExtension' do
+  use_frameworks!
+  # Sürüm çakışmasını önlemek için modern 5.x XCFramework yapısını buraya bağlıyoruz
+  pod 'OneSignalXCFramework', '>= 5.0.0', '< 6.0'
+end
+
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     flutter_additional_ios_build_settings(target)
     target.build_configurations.each do |config|
+      # Hem ana projenin hem de OneSignal uzantısının hedef sürümünü zorla 13.0 yapıyoruz
       config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
     end
   end
