@@ -18,12 +18,12 @@ class WebViewApp extends StatelessWidget {
   const WebViewApp({Key? key}) : super(key: key);
 
   /// URL of the WebView App's Home Page.
-  static const String _homePageURL = 'https://www.flipeverest.com/';
+  static const String _homePageURL = 'https://kitapcep.com.tr/';
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flipeverest App',
+      title: 'KitapCep',
       theme: ThemeData(primarySwatch: Colors.blue),
       onGenerateRoute: (settings) {
         // Put other routes (if any) above this if condition
