@@ -21,7 +21,7 @@ class WebViewAppPage extends StatefulWidget {
 }
 
 class _WebViewAppPageState extends State<WebViewAppPage> {
-  static const Color stackItemsColor = Color(0xFF02ACB0);
+  static const Color stackItemsColor = Color(111111);
 
   /// The Webview controller for the Webview.
   late WebViewController webviewController;
@@ -79,7 +79,7 @@ class _WebViewAppPageState extends State<WebViewAppPage> {
   }
 
   void _registerNotificationHandler() {
-    notificationHandler = NotificationHandler(appID: 'ONESIGNAL_APP_ID');
+    notificationHandler = NotificationHandler(appID: '8030358a-6d46-4226-ac5e-6bce6cf47de5 ');
     if (!Platform.isAndroid)
       notificationHandler.getPermission().then(
         (bool wasPermissionGiven) {
