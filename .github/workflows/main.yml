@@ -20,15 +20,10 @@ jobs:
         with:
           flutter-version: '3.16.9'
 
-      - name: iOS Build Clean and Cache Fix
-        run: |
-          flutter pub get
-          cd ios
-          rm -rf Podfile.lock Cells Pods Xcode
-          rm -rf ~/.cocoapods
-          pod repo remove master || true
-          pod repo remove trunk || true
-          pod cache clean --all
+      - name: Install dependencies
+        run: flutter pub get
 
-      - name: Build IPA
+      - name: Build IPA (Force Global Deployment Target)
+        env:
+          IPHONEOS_DEPLOYMENT_TARGET: '13.0'
         run: flutter build ipa --no-codesign
