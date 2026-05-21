@@ -23,12 +23,11 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      - name: Fix and Force Update CocoaPods
+      - name: Fix CocoaPods CDN and Repo
         run: |
           cd ios
-          rm -rf Podfile.lock
-          pod repo clean --all
-          pod setup
+          pod repo remove master || true
+          pod repo add-cdn master https://cdn.cocoapods.org/ || true
           pod repo update
 
       - name: Build IPA
