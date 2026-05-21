@@ -23,5 +23,5 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      - name: Build IPA
-        run: flutter build ipa --no-codesign
+      - name: Build IPA (No Pods Install)
+        run: flutter build ipa --no-codesign --no-pub --no-version-check
