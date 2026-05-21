@@ -36,7 +36,8 @@ end
 
 target 'OneSignalNotificationServiceExtension' do
   use_frameworks!
-  pod 'OneSignal', '>= 3.0.0', '< 4.0'
+  # OneSignal 5.x mimarisine tam uyum sağlamak için XCFramework sürüm sınırını güncelledik
+  pod 'OneSignalXCFramework', '>= 5.0.0', '< 6.0'
 end
 
 post_install do |installer|
